@@ -1,0 +1,114 @@
+body {
+    background: pink;
+    font-size: 1.125rem;
+    margin: 0; /* Usually do this to every design, just makes it easier to follow the box model and calculate the space of the screen */
+}
+
+/* Media Queries
+    @media MEDIA-TYPE and (MEDIA-FEATURES) { ... }
+        MEDIA-TYPES: @media screen { ... }, @media print { ... }, @media speech { ... }
+        MEDIA CONDITIONS: @media (min-width:600px){ ... }, @media (orientation: landscape) { ... }, @media (hover) { ... }
+        both media-types and conditions are optional, but need to have ONE or the other
+        if using both, example: @media screen and (min-width: 960px) { ... }, sometimes there is the "only" word, but that was old css, no need nowadays
+    NOTE: Order Matters!!, If you put the 400 px below the 650 px media query, WILL NEVER hit the orange color
+    because the width numbers OVERLAP
+
+*/
+
+/* from a minimum width of 400px and bigger, ie anything over 400px ( Purple > 400px ), is purple*/
+@media (min-width: 500px) {
+    body {
+        background: purple;
+    }
+}
+
+/* From a min width of 650px and above, the color is orange, Orange > 650px */
+@media (min-width: 650px) {
+    body {
+        background: orange;
+    }
+}
+
+/* Orientation: Landscape / Portrait, Remember that landscape is WHEN IT(browser viewHeight and viewWidth) IS WIDER THAN IT IS TALL,
+    PORTRAIT IS WHEN IT IS TALLER THAN IT IS WIDE
+*/
+
+.container {
+    width: 95%; /* this is for screens when minimizing the view, making the container use only 95% of the screen instead of usual 100 because makes it easier to read <-- opinion */
+    max-width: 980px; /* add a max width to make sure nothing grows outside of this screen size */
+    margin: 0 auto; /* this is to center the container, margin uses the 0 for top and bottom, then auto for left and right */
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-top: 0;
+}
+
+.main-header {
+    text-align: center;
+}
+
+/* Can do this multiple ways
+    First, can use compound selectors ie -> h1 span {}
+    or h1 > span
+    But can also just give the span a class name, <-- fastest way
+*/
+.colored-header {
+    color: #B7832F;
+}
+
+.wow-image {
+    max-width: 100%; /* image will stop growing to fix the size of its parent <--max is 980px */
+}
+
+.col {
+    color: #707070;
+    padding: 0.75em;
+}
+
+.col-1 {
+    width: 20%;
+}
+
+.col-2 {
+    width: 45%;
+}
+
+.col-3 {
+    width: 70%;
+}
+
+/* Can give the HTML another class instead of last child */
+.col:last-child{
+    color: white;
+    background-color: #312614;
+}
+
+.columns {
+    display: flex;
+    align-items: flex-start; /* By default when items are flexed, they scale to the height of the container and take up all its space, this makes it so that it doesn't scale */
+    justify-content: space-between; /* Adds space between the flexed items, remember that it needs space, ie change values to be less than 100% for the items to actually justify having space to then add up to 100% */
+    margin: 1em 0;
+}
+
+@media (max-width: 600px) {
+    .columns {
+        flex-direction: column;
+    }
+
+    .col-1, 
+    .col-2, 
+    .col-3 {
+        width: 95%;
+    }
+}
+
+
+
